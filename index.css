@@ -2,7 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&display=swap');
 :root {
     --soft-red: hsl(7, 99%, 70%);
+    --opacity-soft-red: hsl(7, 99%, 70%, .5);
     --yellow: hsl(51, 100%, 49%);
+    --opacity-yellow: hsl(51, 100%, 49%, .5);
     --dark-cyan: hsl(167, 40%, 24%);
     --dark-blue: hsl(198, 62%, 26%);
     --dark-moderate-cyan: hsl(168, 34%, 41%);
@@ -61,13 +63,13 @@ nav li a {
     border-radius: 50px;
 }
 
-#prodigo {
+#desktop-menu li:nth-child(4) a {
     background-color: var(--white);
     color: var(--dark-blue);
     font-family: var(--fraunces);
 }
 
-#prodigo:hover {
+#desktop-menu li:nth-child(4) a:hover {
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.2);
     color: var(--white);
@@ -87,6 +89,7 @@ nav li a {
     min-height: 50vh;
     background-color: var(--white);
     border-radius: 5px 0px 5px 5px;
+    transition: all 5000ms;
 }
 
 #triangle-bottomright {
@@ -145,6 +148,7 @@ nav li a {
     display: flex;
     flex-flow: column;
     justify-content: center;
+    align-items: baseline;
     text-align: left;
 }
 
@@ -162,12 +166,39 @@ nav li a {
     color: var(--very-dark-desaturated-blue);
 }
 
-#yellow-anchor {
-    text-decoration-color: var(--yellow);
+#red-anchor, #yellow-anchor {
+    text-decoration: none;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-#red-anchor {
-    text-decoration-color: var(--soft-red);
+#yellow-anchor:after {
+    background-color: var(--opacity-yellow);
+}
+
+#red-anchor:after {
+    background-color: var(--opacity-soft-red);
+}
+
+#red-anchor:after, #yellow-anchor::after {
+    content: "";
+    position: absolute;
+    height: 35%;
+    border-radius: 50px;
+    left: -5px;
+    right: -5px;
+    bottom: 0px;
+    z-index: -1;
+    transition: all 500ms;
+}
+
+#yellow-anchor:hover:after {
+    background-color: var(--yellow);
+}
+
+#red-anchor:hover:after {
+    background-color: var(--soft-red);
 }
 
 .body-article img, .gallery img {
@@ -268,12 +299,16 @@ nav li a {
     color: var(--white);
 }
 
+#logo-sunnyside-footer {
+    fill: var(--dark-cyan);
+}
+
 .social-media {
     display: flex;
 }
 
-.social-media img {
-    margin-right: 15px;
+.social-media li a:hover path {
+    fill: var(--white);
 }
 
 .open-menu-mobile {
@@ -304,6 +339,7 @@ nav li a {
     .text {
         margin: 5%;
         text-align: center;
+        align-items: center;
     }
     .body-article img {
         grid-row: 1;
