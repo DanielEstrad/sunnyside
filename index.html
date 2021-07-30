@@ -30,11 +30,9 @@
                             <a href="#" id="prodigo">CONTACT</a>
                         </li>
                     </ul>
-                    <button id="hamburguer-button">
-                        <svg id="hamburguer-mobile" width="24" height="18" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M24 16v2H0v-2h24zm0-8v2H0V8h24zm0-8v2H0V0h24z" fill="#FFF" fill-rule="evenodd" />
-                        </svg>
-                    </button>
+                    <svg id="hamburguer-mobile" width="24" height="18" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 16v2H0v-2h24zm0-8v2H0V8h24zm0-8v2H0V0h24z" fill="#FFF" fill-rule="evenodd" />
+                    </svg>
                     <div id="toggle-menu">
                         <div id="triangle-bottomright">
                         </div>
@@ -155,10 +153,8 @@
         </div>
     </main>
     <script>
-        const hamburguer = document.getElementById('hamburguer-button');
+        const hamburguer = document.getElementById('hamburguer-mobile');
         var menu = document.getElementById('toggle-menu');
-
-        console.log(menu)
 
         hamburguer.addEventListener('click', () => {
             menu.classList.toggle('open-menu-mobile');
