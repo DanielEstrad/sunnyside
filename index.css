@@ -24,7 +24,7 @@ body {
     display: grid;
     grid-template-rows: 100vh repeat(3, 1fr) 15% 10% 7%;
     min-height: 100vh;
-    min-width: 100vw;
+    min-width: 100%;
 }
 
 .header {
@@ -35,34 +35,86 @@ body {
 }
 
 nav {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 2% 5% 2% 5%;
+    justify-content: space-around;
+    min-height: 8vh;
     font-family: var(--barlow);
 }
 
 nav ul {
-    margin: 0;
     display: flex;
+    justify-content: space-around;
+    width: 35%;
     color: var(--white);
 }
 
 nav li {
     list-style-type: none;
+}
+
+nav li a {
+    text-decoration: none;
+    color: var(--white);
     padding: 15px;
     border-radius: 50px;
 }
 
-nav li:nth-child(4) {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-nav li:hover {
-    cursor: pointer;
+#prodigo {
     background-color: var(--white);
     color: var(--dark-blue);
     font-family: var(--fraunces);
+}
+
+#prodigo:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+}
+
+#hamburguer-mobile {
+    display: none;
+}
+
+#toggle-menu {
+    display: none;
+    position: absolute;
+    top: 10vh;
+    right: 5%;
+    left: 5%;
+    width: 90%;
+    min-height: 50vh;
+    background-color: var(--white);
+    border-radius: 5px 0px 5px 5px;
+}
+
+#triangle-bottomright {
+    position: absolute;
+    top: calc(10vh - 100px);
+    right: 0;
+    width: 0;
+    height: 0;
+    border-bottom: 100px solid var(--white);
+    border-left: 100px solid transparent;
+}
+
+#toggle-menu ul {
+    flex-flow: column;
+    height: 45vh;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0;
+    width: 100%;
+}
+
+#toggle-menu ul a {
+    color: var(--blue-gray);
+}
+
+#toggle-menu ul li:nth-child(4) a {
+    background-color: var(--yellow);
+    color: var(--very-dark-desaturated-blue);
 }
 
 .header h1 {
@@ -87,7 +139,7 @@ nav li:hover {
     font-size: 18px;
 }
 
-.body-article .text {
+.text {
     margin-left: 25%;
     margin-right: 25%;
     display: flex;
@@ -120,6 +172,8 @@ nav li:hover {
 
 .body-article img, .gallery img {
     width: 100%;
+    object-fit: cover;
+    height: 100%;
 }
 
 .reverse-image {
@@ -135,9 +189,10 @@ nav li:hover {
     flex-flow: column;
     justify-content: flex-end;
     align-items: center;
-    padding-bottom: 5%;
+    padding-bottom: 50px;
     padding-right: 25%;
     padding-left: 25%;
+    background-position: top;
 }
 
 .cherry {
@@ -147,7 +202,6 @@ nav li:hover {
 
 .orange {
     background-image: url('images/image-photography.jpg');
-    background-position: top;
     color: var(--dark-blue);
 }
 
@@ -199,11 +253,19 @@ nav li:hover {
     display: flex;
     list-style-type: none;
     font-family: var(--barlow);
-    color: var(--very-dark-desaturated-blue);
 }
 
 .footer li {
     margin-right: 30px;
+}
+
+.footer li a {
+    text-decoration: none;
+    color: var(--very-dark-desaturated-blue);
+}
+
+.footer li a:hover {
+    color: var(--white);
 }
 
 .social-media {
@@ -212,4 +274,53 @@ nav li:hover {
 
 .social-media img {
     margin-right: 15px;
+}
+
+.open-menu-mobile {
+    display: inline-block !important;
+}
+
+@media all and (max-width: 768px) {
+    .container {
+        grid-template-rows: 100vh repeat(3, 1fr) 15% 5% 7%;
+    }
+    nav {
+        justify-content: space-between;
+        padding: 0 5%;
+    }
+    #hamburguer-button {
+        background-color: transparent;
+        border: none;
+    }
+    #hamburguer-mobile {
+        display: inline-block;
+    }
+    #hamburguer-mobile:hover {
+        cursor: pointer;
+    }
+    #desktop-menu {
+        display: none;
+    }
+    .body-article {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    .text {
+        margin: 5%;
+        text-align: center;
+    }
+    .body-article img {
+        grid-row: 1;
+    }
+    .information-image {
+        padding-bottom: 5%;
+    }
+    .testimonials {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto repeat(3, 1fr);
+    }
+    .gallery {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
 }
